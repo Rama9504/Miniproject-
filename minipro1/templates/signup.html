@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+        <style>
+            .class1{
+                background-color:red;
+                opacity:1.0;
+                width:250px;
+                text-align:center;
+                margin-left:auto;
+                margin-right:auto;
+            }
+
+            .class2{
+               margin-left:auto;
+               margin-right:auto;
+            }
+            .class3{
+                text-align:center;
+                margin-top:150px;
+            }
+            .class5{
+                color:blue;
+                text-decoration:none;
+            }
+            .class6{
+                color:blue;
+                text-align:left;
+            }
+            .class7{
+                height:25px;
+            }
+            .class8{
+                background-color:orange;
+                height:30px;
+                border-radius:10px;
+
+            }
+        </style>
+    </head>
+    <body>
+        {% for message in messages%}
+        <div class="alert alert-{{message.tags}} alert-dissmissable fade show" role="alert">
+        <strong>messege:</strong>{{message}}
+        <button type="button" class="close" data-dismiss="alert"aria-label="close">
+        <span aria-hidden="true">&times;"</span>
+        </button>
+        </div>
+        {% endfor %}
+        <h3 class="class3">SIGN UP</h3>
+        <div class="class2">
+            <div class="class1">
+                <form action="/signup" method="post">
+                {% csrf_token %}
+                    <br><br>
+                    <label class="class6" for="username">USERNAME:</label><br>
+                    <input class="class7" type="text"id="username" name="username" placeholder="username" Required><br><br>
+                    <label class="class6" for="email">EMAIL:</label><br>
+                    <input class="class7" type="email"id="email" name="email" placeholder="email" Required><br><br>
+                    <label class="class6" for="password">PASSWORD:</label><br>
+                    <input class="class7" type="password"id="password" name="password" placeholder="password" Required><br><br>
+                    <label class="class6" for="password1">CONFIRM PASSWORD:</label><br>
+                    <input class="class7" type="password"id="password1" name="password1" placeholder="confirm password" Required><br><br>     
+                    <button class="class8" type="submit">signup</button><br>
+                </form>
+                <p>Already have an account? <a class="class5" href="/signin">Sign in</a></p><br>
+            </div>
+        </div>
+    </body>
+</html>

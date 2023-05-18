@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&display=swap" rel="stylesheet">
+        <title>Main Page</title>
+        <style>
+            .class1{
+                text-align:center;
+                color:grey;
+                font-family: 'Alkatra', cursive;
+            }
+            .class6{
+              color:white;
+              text-align:center;
+            }
+            .class2{
+                font-family:verdana;
+            }
+            .navbar{
+                background-color:#d8b7ee;
+            }
+            .class{
+              margin-top:6px;
+              margin-left:900px;
+              border-radius:10px;
+              background-color:#0d6efd;
+            }
+            .class3{
+              font-family: 'Alkatra', cursive;
+              text-align:center;
+            }
+            .class4{
+              font-family: 'Alkatra', cursive;
+              text-align:center;
+            }
+            .class5{
+              margin-left:auto;
+              margin-right:auto;
+              border-style:inset;
+              width:900px;
+            }
+            .class6{
+              font-color:black;
+              text-align:center;
+            }
+            .class7{
+              text-align:center;
+            }
+            .table{
+              width:50%;
+              margin-left:auto;
+              margin-right:auto;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary ubody">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand profile" href="/studentprofile"><button type="button" class="btn btn-primary">PROFILE</button></a>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/result"><button type="button" class="btn btn-primary">RESULTS</button></a>
+                </li>             
+                <li class="nav-item">
+                  <a class="nav-link" href="/honregistration"><button type="button" class="btn btn-primary">HONREGISTER</button></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/acadregistration"><button type="button" class="btn btn-primary">ACADREGISTER</button></a>
+                </li>
+                <li class="nav-item">
+                  <button class="class"><a class="nav-link class6" href="/signout">SIGN OUT</a></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        {% if user.is_authenticated %}
+           <h1 class="class1"></h1>
+        {% else %}
+           <button type="submit"><a href="/signup">Signup</a></button>
+           <button type="submit"><a href="/signin">Signin</a></button>
+        {% endif %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">S.no</th>
+              <th scope="col">Course_id</th>
+              <th scope="col">marks</th>
+              <th scope="col">grade_points</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for dat in data %} 
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{dat.Course_id}}</td>
+              <td>{{dat.marks}}</td>
+              <td>{{dat.grade}}</td>
+            </tr>
+          {% endfor %}
+          {% for hondat in hondata %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{hondat.Honors_id}}</td>
+              <td>{{hondat.marks}}</td>
+              <td>{{hondat.grades}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <div class="class7">
+        <p>SGPA={{semester_sgpa}}</p>
+        </div>
+    </body>
+</html>

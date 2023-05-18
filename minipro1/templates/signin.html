@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign In</title>
+        <style>
+            .class1{
+                margin-left:42%;
+            }
+            .class2{
+                background-color:red;
+                opacity:0.8;
+                width:250px;
+                text-align:center;
+            }
+            .class3{
+                text-align:center;
+                margin-top:200px;
+            }
+            .class4{
+                text-decoration:none;
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h1 class="class3">SIGN IN</h1>
+        <div class="class1">
+            <div class="class2">
+                <br>
+                {% for message in messages%}
+                <div class="alert alert-{{message.tags}} alert-dissmissable fade show" role="alert">
+                <strong>messege:</strong>{{message}}
+                <button type="button" class="close" data-dismiss="alert"aria-label="close">
+                <span aria-hidden="true">&times;"</span>
+                </button>
+                </div>
+                {% endfor %}
+            <form action="/signin" method="post">
+            {% csrf_token %}
+                <br><br>
+                <label for="">USERNAME</label><br>
+                <input type="text"id="username" name="username" placeholder="username"><br><br>       
+                <label for="">PASSWORD</label><br>
+                <input type="password"id="password" name="password" placeholder="password"><br><br>
+                <button type="submit">signin</button><br><br>
+            </form>
+            <p>Doesn't have an account?  <a class="class4" href="/signup">Sign Up</a></p><br>
+            </div>
+        </div>
+    </body>
+</html>
